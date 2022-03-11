@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  database:
+    container_name: postgres_trickster
+    image: postgres:14.1-alpine
+    environment:
+      - POSTGRES_USER=trickster
+      - POSTGRES_PASSWORD=trickster
+    volumes:
+      - /data/postgres
+    ports:
+      - "5432:5432"
+
+  localstack:
+    image: localstack/localstack:latest
+    container_name: localstack_trickster
+    environment:
+      - AWS_DEFAULT_REGION=us-east-1
+      - EDGE_PORT=4566
+      - SERVICES=sqs,sns
+    ports:
+      - '4566-4597:4566-4597'
+    volumes:
+      - "/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
