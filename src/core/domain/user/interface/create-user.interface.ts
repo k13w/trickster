@@ -3,6 +3,10 @@ export interface CreateUserRequest {
   lastName: string;
 }
 
-export interface CreateUserResponse {
-  id: string;
-}
+export type User = {
+  id: number;
+  createdAt: Date;
+  updatedAt: Date;
+  name: string;
+  lastName: string;
+};
