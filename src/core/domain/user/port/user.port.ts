@@ -3,6 +3,6 @@ import {
   CreateUserResponse,
 } from '../interface/create-user.interface';
 
-export interface UserPort {
+export interface UserRepositoryPort {
   createUser(payload: CreateUserRequest): Promise<CreateUserResponse>;
 }

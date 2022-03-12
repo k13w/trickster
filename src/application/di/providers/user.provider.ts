@@ -6,7 +6,7 @@ import { PrismaClient } from '@prisma/client';
 
 export const repository: Provider[] = [
   {
-    provide: UserTokens.UserRepository,
+    provide: UserTokens.UserRepositoryPort,
     useFactory: (connection) => new UserRepository(connection),
     inject: [PrismaClient],
   },
@@ -16,13 +16,6 @@ export const useCases: Provider[] = [
   {
     provide: UserTokens.CreateNewUser,
     useFactory: (repository) => new CreateNewUser(repository),
-    inject: [UserTokens.UserRepository],
-  },
-];
-
-export const ports: Provider[] = [
-  {
-    provide: UserTokens.UserPort,
-    useFactory: () => <any>{},
+    inject: [UserTokens.UserRepositoryPort],
   },
 ];
