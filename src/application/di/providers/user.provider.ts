@@ -1,7 +1,7 @@
 import { Provider } from '@nestjs/common';
-import { UserTokens } from '../../../core/domain/user/di/user.tokens';
-import { CreateNewUser } from '../../../core/domain/user/usecase/create-new-user';
-import { UserRepository } from '../../../infrastructure/repository/user.repository';
+import { UserTokens } from '@domain/user/di/user.tokens';
+import { CreateNewUser } from '@domain/user/usecase/create-new-user';
+import { UserRepository } from '@infrastructure/repository/user.repository';
 import { PrismaClient } from '@prisma/client';
 
 export const repository: Provider[] = [

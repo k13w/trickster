@@ -1,8 +1,8 @@
-import { Controller, Inject } from '@nestjs/common';
-import { UserTokens } from '../../../core/domain/user/di/user.tokens';
-import { CreateNewUser } from '../../../core/domain/user/usecase/create-new-user';
-import { GrpcMethod } from '@nestjs/microservices';
-import { Metadata, ServerUnaryCall } from '@grpc/grpc-js';
+import { Body, Controller, Inject, Post } from '@nestjs/common';
+import { UserTokens } from '@domain/user/di/user.tokens';
+import { CreateNewUser } from '@domain/user/usecase/create-new-user';
+import { User } from "@prisma/client";
+import { CreateUserRequest } from "@domain/user/interface/create-user.interface";
 
 @Controller('user')
 export class UserController {
@@ -11,8 +11,8 @@ export class UserController {
     private createNewUserUseCase: CreateNewUser,
   ) {}
 
-  @GrpcMethod('UserService', 'Create')
-  createNewUser(data: any, metadata: Metadata, call: ServerUnaryCall<any, any>): any {
+  @Post('create-user')
+  createNewUser(@Body() data: CreateUserRequest): Promise<User> {
     return this.createNewUserUseCase.execute(data);
   }
 }
