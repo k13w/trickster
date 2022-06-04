@@ -1,7 +1,6 @@
 import { UserRepositoryPort } from '@domain/user/port/user-repository.port';
-import { PrismaClient, User } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 import { CreateUserRequest } from '@infrastructure/interface/create-user.interface';
-import {PrismaClientKnownRequestError} from "@prisma/client/runtime";
 
 export class UserRepository implements UserRepositoryPort {
   constructor(private readonly prisma: PrismaClient) {}

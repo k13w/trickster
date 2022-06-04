@@ -13,6 +13,8 @@ export class UserController {
 
   @Post('create-user')
   createNewUser(@Body() data: CreateUserRequest): Promise<User> {
+    console.log("data", data)
+    // @ts-ignore
     return this.createNewUserUseCase.execute(data);
   }
 }
