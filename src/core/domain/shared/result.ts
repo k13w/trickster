@@ -1,6 +1,6 @@
 export class Result<T> {
-    public isSuccess: boolean;
-    public isFailure: boolean;
+    public success: boolean;
+    public failure: boolean;
     public error: string;
     public _value: T;
 
@@ -13,8 +13,8 @@ export class Result<T> {
             throw new Error(`Invalid Operation: A falling result needs to contain error message`)
         }
 
-        this.isSuccess = isSuccess
-        this.isFailure = !isSuccess
+        this.success = isSuccess
+        this.failure = !isSuccess
         this.error = error
         this._value = value
 
@@ -22,7 +22,7 @@ export class Result<T> {
     }
 
     public getValue(): T {
-        if (!this.isSuccess) {
+        if (!this.success) {
             throw new Error(`Cant retrieve the value from a failed result.!`)
         }
 

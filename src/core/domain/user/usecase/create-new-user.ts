@@ -1,15 +1,23 @@
-import { CreateUserRequest, User } from '../interface/create-user.interface';
+import { CreateUserRequest } from '../interface/create-user.interface';
 import { UserRepositoryPort } from '../port/user-repository.port';
-import {Result} from "@domain/shared/result";
+import { Result } from '@domain/shared/result';
 
 export class CreateNewUser {
   constructor(private readonly repository: UserRepositoryPort) {}
 
-  async execute(data: CreateUserRequest): Promise<Result<User>> {
+  async execute(data: CreateUserRequest): Promise<Result<CreateUserRequest>> {
     if (Object.keys(data).length === 0) {
-      return Result.fail('dados invalidos')
+      return Result.fail(
+        'Nenhum dado foi informado, por favor preencha os campos',
+      );
     }
 
-    return Result.ok()
+    const createUser = await this.repository.createUser(data);
+
+    console.log("create user", createUser)
+
+    if (createUser.failure) {
+      console.log("falha")
+    }
   }
 }

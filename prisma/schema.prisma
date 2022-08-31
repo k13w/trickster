@@ -7,12 +7,23 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+generator typegraphql {
+  provider = "typegraphql-prisma"
+}
+
 model User {
   id        Int      @id @default(autoincrement())
+  name     String
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  firstName     String   @db.VarChar(255)
-  lastName     String   @db.VarChar(255)
-  email String @db.VarChar(255)
-  password String @db.VarChar(255)
+  messages Message[]
+  @@map(name: "user")
+}
+
+model Message {
+  id        Int      @id @default(autoincrement())
+  body        String
+  createdAt DateTime @default(now())
+  userId Int
+  user User @relation(fields: [userId], references: [id])
+  @@map(name: "message")
 }
