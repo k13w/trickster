@@ -1,11 +1,11 @@
-import { CreateUserRequest } from '../interface/create-user.interface';
 import { UserRepositoryPort } from '../port/user-repository.port';
 import { Result } from '@domain/shared/result';
 
 export class CreateNewUser {
   constructor(private readonly repository: UserRepositoryPort) {}
 
-  async execute(data: CreateUserRequest): Promise<Result<CreateUserRequest>> {
+  async execute(data: any): Promise<Result<any>> {
+    console.log("data", data)
     if (Object.keys(data).length === 0) {
       return Result.fail(
         'Nenhum dado foi informado, por favor preencha os campos',
