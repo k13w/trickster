@@ -1,10 +1,10 @@
 import { UserRepositoryPort } from '@domain/user/port/user-repository.port';
-import { PrismaClient } from '@prisma/client';
 import { Result } from '@domain/shared/result';
 import { PrismaClientValidationError } from '@prisma/client/runtime';
+import { PrismaService } from '@application/modules/prisma.service';
 
 export class UserRepository implements UserRepositoryPort {
-  constructor(private readonly prisma: PrismaClient) {}
+  constructor(private readonly prisma: PrismaService) {}
 
   async createUser(payload: any): Promise<Result<unknown>> {
     try {
