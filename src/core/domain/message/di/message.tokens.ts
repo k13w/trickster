@@ -3,6 +3,7 @@ export class MessageTokens {
   public static readonly CreateMessage: unique symbol = Symbol('CreateMessage');
 
   // repository
-  public static readonly MessageRepositoryPort: unique symbol =
-    Symbol('MessageRepositoryPort');
+  public static readonly MessageRepositoryPort: unique symbol = Symbol(
+    'MessageRepositoryPort',
+  );
 }

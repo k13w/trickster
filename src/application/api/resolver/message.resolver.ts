@@ -10,11 +10,13 @@ import { MessageTokens } from '@domain/message/di/message.tokens';
 export class MessageResolver {
   constructor(
     @Inject(MessageTokens.CreateMessage)
-    private readonly createMessageUseCase: CreateMessage
+    private readonly createMessageUseCase: CreateMessage,
   ) {}
 
   @Mutation(() => Message)
-  createMessage(@Args('createMessageInput') createMessageInput: CreateMessageInput) {
+  createMessage(
+    @Args('createMessageInput') createMessageInput: CreateMessageInput,
+  ) {
     return this.createMessageUseCase.execute(createMessageInput);
   }
 

@@ -9,10 +9,10 @@ export class UserRepository implements UserRepositoryPort {
   async createUser(payload: any): Promise<Result<unknown>> {
     try {
       const user = await this.prisma.user.create({
-        data: payload
+        data: payload,
       });
 
-      return user as any
+      return user as any;
     } catch (e) {
       if (e instanceof PrismaClientValidationError) {
       }
@@ -23,13 +23,13 @@ export class UserRepository implements UserRepositoryPort {
     try {
       const users = await this.prisma.user.findMany({
         include: {
-          messages: true
-        }
+          messages: true,
+        },
       });
 
-      console.log("users ->", users)
+      console.log('users ->', users);
 
-      return users as any
+      return users as any;
     } catch (e) {
       if (e instanceof PrismaClientValidationError) {
       }

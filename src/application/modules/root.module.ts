@@ -21,7 +21,7 @@ import { MessageModule } from '@application/modules/message.module';
         }),
       ],
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
-      cors: true
+      cors: true,
     }),
     UserModule,
     MessageModule,

@@ -4,6 +4,6 @@ import { repository, useCases } from '@application/providers/message.provider';
 import { PrismaClient } from '@prisma/client';
 
 @Module({
-  providers: [MessageResolver, ...repository, ...useCases, PrismaClient]
+  providers: [MessageResolver, ...repository, ...useCases, PrismaClient],
 })
 export class MessageModule {}

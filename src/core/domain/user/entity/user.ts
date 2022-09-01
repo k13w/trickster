@@ -3,12 +3,12 @@ import { Message } from '@domain/message/entity/message';
 
 @ObjectType()
 export class User {
-  @Field(_type => ID)
-  id: string
+  @Field((_type) => ID)
+  id: string;
 
   @Field({ description: 'Name user' })
-  name: string
+  name: string;
 
-  @Field(type => [Message])
+  @Field((type) => [Message])
   messages: Message[];
 }

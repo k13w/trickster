@@ -19,7 +19,6 @@ export class UserResolver {
 
   @Mutation(() => User)
   createUser(@Args('createUserInput') createUserInput: CreateUserInput) {
-    console.log("oi")
     return this.createNewUserUseCase.execute(createUserInput);
   }
 
