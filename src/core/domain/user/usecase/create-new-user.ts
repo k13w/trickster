@@ -1,5 +1,5 @@
 import { UserRepositoryPort } from '../port/user-repository.port';
-import { Result } from '@domain/shared/result';
+import { Result } from '../../../common/result';
 
 export class CreateNewUser {
   constructor(private readonly repository: UserRepositoryPort) {}

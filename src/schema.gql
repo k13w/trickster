@@ -4,13 +4,20 @@
 
 type User {
   id: ID!
+
+  """Name user"""
   name: String!
 }
 
 type Query {
-  sayHello: [User!]!
+  user: [User!]!
 }
 
 type Mutation {
-  createUser(name: String!): User!
+  createUser(createUserInput: CreateUserInput!): User!
+}
+
+input CreateUserInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
 }

@@ -1,10 +1,10 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
-export class User {
+export class Message {
   @Field(_type => ID)
   id: string
 
-  @Field({ description: 'Name user' })
-  name: string
+  @Field({ description: 'message body' })
+  body: string
 }

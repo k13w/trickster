@@ -1,5 +1,5 @@
 import { UserRepositoryPort } from '@domain/user/port/user-repository.port';
-import { Result } from '@domain/shared/result';
+import { Result } from '@domain/../../core/common/result';
 import { PrismaClientValidationError } from '@prisma/client/runtime';
 import { PrismaService } from '@application/modules/prisma.service';
 
@@ -13,6 +13,17 @@ export class UserRepository implements UserRepositoryPort {
       });
 
       return user as any
+    } catch (e) {
+      if (e instanceof PrismaClientValidationError) {
+      }
+    }
+  }
+
+  async findAllUsers(): Promise<Result<unknown>> {
+    try {
+      const users = await this.prisma.user.findMany();
+
+      return users as any
     } catch (e) {
       if (e instanceof PrismaClientValidationError) {
       }

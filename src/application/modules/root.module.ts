@@ -1,13 +1,12 @@
 import { Module } from '@nestjs/common';
-import { UserModule } from './user.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { UserResolver } from '@application/api/resolver/user.resolver';
-import { repository, useCases } from '@application/di/providers/user.provider';
 import { PrismaClient } from '@prisma/client';
 import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
 import { join } from 'path';
 import { PrismaModule } from '@application/modules/prisma.module';
+import { UserModule } from '@application/modules/user.module';
+import { repository, useCases } from '@application/providers/user.provider';
 
 @Module({
   imports: [
@@ -26,6 +25,6 @@ import { PrismaModule } from '@application/modules/prisma.module';
     PrismaModule,
   ],
   controllers: [],
-  providers: [...repository, ...useCases, PrismaClient, UserResolver],
+  providers: [...repository, ...useCases, PrismaClient],
 })
 export class RootModule {}
