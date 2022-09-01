@@ -7,6 +7,7 @@ import { join } from 'path';
 import { PrismaModule } from '@application/modules/prisma.module';
 import { UserModule } from '@application/modules/user.module';
 import { repository, useCases } from '@application/providers/user.provider';
+import { MessageModule } from '@application/modules/message.module';
 
 @Module({
   imports: [
@@ -20,8 +21,10 @@ import { repository, useCases } from '@application/providers/user.provider';
         }),
       ],
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      cors: true
     }),
     UserModule,
+    MessageModule,
     PrismaModule,
   ],
   controllers: [],

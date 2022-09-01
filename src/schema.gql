@@ -2,22 +2,36 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Message {
+  id: ID!
+
+  """message body"""
+  body: String!
+}
+
 type User {
   id: ID!
 
   """Name user"""
   name: String!
+  messages: [Message!]!
 }
 
 type Query {
-  user: [User!]!
+  users: [User!]!
 }
 
 type Mutation {
   createUser(createUserInput: CreateUserInput!): User!
+  createMessage(createMessageInput: CreateMessageInput!): Message!
 }
 
 input CreateUserInput {
   """Example field (placeholder)"""
-  exampleField: Int!
+  name: String!
+}
+
+input CreateMessageInput {
+  """Body your message"""
+  body: String!
 }

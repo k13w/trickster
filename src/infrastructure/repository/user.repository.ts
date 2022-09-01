@@ -9,7 +9,7 @@ export class UserRepository implements UserRepositoryPort {
   async createUser(payload: any): Promise<Result<unknown>> {
     try {
       const user = await this.prisma.user.create({
-        data: payload,
+        data: payload
       });
 
       return user as any
@@ -21,7 +21,13 @@ export class UserRepository implements UserRepositoryPort {
 
   async findAllUsers(): Promise<Result<unknown>> {
     try {
-      const users = await this.prisma.user.findMany();
+      const users = await this.prisma.user.findMany({
+        include: {
+          messages: true
+        }
+      });
+
+      console.log("users ->", users)
 
       return users as any
     } catch (e) {

@@ -5,6 +5,7 @@ export class CreateMessage {
   constructor(private readonly repository: MessageRepositoryPort) {}
 
   async execute(data: any): Promise<Result<any>> {
+    console.log("ola")
     return await this.repository.createMessage(data);
   }
 }

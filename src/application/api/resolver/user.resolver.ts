@@ -19,10 +19,11 @@ export class UserResolver {
 
   @Mutation(() => User)
   createUser(@Args('createUserInput') createUserInput: CreateUserInput) {
+    console.log("oi")
     return this.createNewUserUseCase.execute(createUserInput);
   }
 
-  @Query(() => [User], { name: 'user' })
+  @Query(() => [User], { name: 'users' })
   findAll() {
     return this.findAllUsersUseCase.execute();
   }
